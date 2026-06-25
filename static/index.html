@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>momma's damper</title>
+    <meta name="description" content="Liquid glass control deck for automated game inventory trading." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class="orbs" aria-hidden="true">
+        <span class="orb orb-1"></span>
+        <span class="orb orb-2"></span>
+        <span class="orb orb-3"></span>
+    </div>
+
+    <main class="wrap">
+        <header class="hdr">
+            <div class="pill glass">
+                <span class="dot"></span>automation deck
+            </div>
+            <h1 class="title">momma's damper</h1>
+            <p class="sub">контра хуесосов, которые демпингуют шмотки на маркете.</p>
+        </header>
+
+        <div class="grid">
+            <section class="glass card">
+                <div class="card-head">
+                    <h2>Настройки</h2>
+                </div>
+                <div class="form">
+                    <label style="grid-column: span 2;"><span>API Ключ</span>
+                        <div style="display: flex; gap: 8px;">
+                            <input type="password" id="api_key" placeholder="Введите ваш API ключ" />
+                            <button type="button" id="reset_key_btn" class="btn danger"
+                                style="width: auto; padding: 10px 15px; margin: 0; display: none;">✕</button>
+                        </div>
+                    </label>
+
+                    <button id="load_btn" class="btn accent" style="grid-column: span 2; margin-bottom: 10px;">1.
+                        Загрузить инвентарь на продаже</button>
+
+                    <label style="grid-column: span 2;"><span>Предмет для демпинга</span>
+                        <select id="item_select" disabled>
+                            <option value="">Сначала загрузите инвентарь...</option>
+                        </select>
+                    </label>
+
+                    <label style="grid-column: span 2;"><span>Минимальная цена (Дно, в рублях)</span>
+                        <input id="min_price" type="number" step="0.01" placeholder="Например: 1500.50" disabled />
+                    </label>
+                </div>
+                <div class="actions">
+                    <button id="add_task_btn" class="btn accent" style="width: 100%;" disabled>+ Добавить в
+                        очередь</button>
+                </div>
+            </section>
+
+            <section class="glass card">
+                <div class="card-head">
+                    <h2>Активная очередь</h2>
+                    <span class="badge glass-inset" id="count">0 агентов</span>
+                </div>
+                <div class="task-list glass-inset" id="task_list">
+                    <div class="empty">Очередь пуста</div>
+                </div>
+                <div class="actions" style="margin-top: 18px; display: flex; gap: 10px;">
+                    <button id="start_btn" class="btn accent" style="flex: 1;">▶ Запустить демпера</button>
+                    <button id="stop_btn" class="btn danger" style="flex: 1;" disabled>⏹ Остановить</button>
+                </div>
+            </section>
+        </div>
+
+        <section class="glass card term-card">
+            <div class="card-head">
+                <div class="term-dots">
+                    <span></span><span></span><span></span>
+                    <strong>logs</strong>
+                </div>
+            </div>
+            <div class="terminal" id="log_output">Ожидание запуска...</div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
